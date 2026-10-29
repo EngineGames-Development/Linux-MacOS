@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyprMac OS Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              glow: '0 10px 30px rgba(0,0,0,0.25)',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+  >
+    <div class="relative flex min-h-screen flex-col">
+      <header
+        class="pointer-events-none absolute inset-x-0 top-0 z-40 px-4 pt-3"
+        aria-label="System top bar"
+      >
+        <div
+          class="pointer-events-auto mx-auto flex h-9 max-w-6xl items-center justify-between rounded-xl border border-white/20 bg-white/10 px-4 backdrop-blur-xl"
+        >
+          <div class="flex items-center gap-3 text-sm font-semibold">
+            <span aria-hidden="true"></span>
+            <span class="text-white/90">HyprMac OS</span>
+          </div>
+          <div class="flex items-center gap-4 text-xs text-white/80">
+            <span>Wi-Fi</span>
+            <span>100%</span>
+            <span id="clock" class="font-medium">--:--</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 px-4 pb-28 pt-16">
+        <section
+          id="workspace"
+          class="mx-auto grid h-[calc(100vh-9rem)] max-w-6xl gap-3 transition-all duration-300"
+          aria-label="Tiling workspace"
+        ></section>
+      </main>
+
+      <nav
+        class="pointer-events-none absolute inset-x-0 bottom-6 z-40 flex justify-center px-4"
+        aria-label="Application dock"
+      >
+        <div
+          class="pointer-events-auto flex items-end gap-2 rounded-2xl border border-white/20 bg-white/10 p-2 shadow-glow backdrop-blur-xl"
+        >
+          <button
+            type="button"
+            class="dock-icon group relative flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-2xl transition-all duration-200 hover:-translate-y-2 hover:scale-125"
+            data-app="terminal"
+            aria-label="Open Terminal"
+            title="Terminal"
+          >
+            <span aria-hidden="true">⌘</span>
+          </button>
+          <button
+            type="button"
+            class="dock-icon group relative flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-2xl transition-all duration-200 hover:-translate-y-2 hover:scale-125"
+            data-app="browser"
+            aria-label="Open Browser"
+            title="Browser"
+          >
+            <span aria-hidden="true">🌐</span>
+          </button>
+          <button
+            type="button"
+            class="dock-icon group relative flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-2xl transition-all duration-200 hover:-translate-y-2 hover:scale-125"
+            data-app="settings"
+            aria-label="Open Settings"
+            title="Settings"
+          >
+            <span aria-hidden="true">⚙️</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div
+      id="spotlight"
+      class="pointer-events-none absolute inset-0 z-50 hidden items-start justify-center bg-black/40 pt-[18vh] backdrop-blur-sm"
+      aria-hidden="true"
+    >
+      <div
+        class="w-[min(90vw,40rem)] rounded-2xl border border-white/20 bg-white/15 p-4 shadow-glow backdrop-blur-xl"
+      >
+        <input
+          id="spotlightInput"
+          type="text"
+          placeholder="Spotlight Search"
+          class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-lg text-white placeholder:text-white/60 focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
